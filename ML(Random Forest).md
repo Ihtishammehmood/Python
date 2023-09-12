@@ -41,7 +41,7 @@ The main purpose of using random forest is to predict the PHA(Potentially Hazard
 
 ## import Liabraries
 
-The first step before working on different data sets is to import some liabraries. The improtant liabraries are as follows.
+The first step before working on different data sets is to import some libraries. The important libraries are as follows.
 ``````python
 import numpy as np
 import pandas as pd
@@ -57,7 +57,7 @@ df = pd.read_csv('/kaggle/input/asteroid-dataset/dataset.csv')
 ``````
 ## checking null Values 
 
-Null values can be very prblematic when it comes to data analyis or data creating a machine learning models. Dealing with null values should be the primary concern.
+Null values can be very problematic when it comes to data analysis or data creating a machine learning models. Dealing with null values should be the primary concern.
 
 ``````python
 df.isnull().sum()
@@ -67,8 +67,8 @@ This line of code gives the list of all the null values in the series(columns) o
 
 ## Dropping columns with majority of null values
 
-Dropping columns that has  most null values. These kind of variables are not helpful in model building onr data data analyis
-I removed the columns that has alot of null values with the following line of code
+Dropping columns that has  most null values. These kind of variables are not helpful in model building onr data data analysis
+I removed the columns that has a lot of null values with the following line of code
 
 ``````python
 column_drop = ['name','prefix','diameter','albedo','diameter_sigma']
@@ -122,7 +122,8 @@ print(capped_df)
 ``````
 
 This line code first create upper limit and lower limit with the name of Q1 and Q3 then then the  formula is created which is IQR = Q3-Q1
-The main purpsoe of creating this upper and lower limit is to bound the data frame within this limit abve or below the limit is considered as outlier 
+The main purpose of creating this upper and lower limit is to bound the data frame within this limit above or below the limit is considered as outlier 
+
 ``````Python
    lower_bound = Q1 - 1.5 * IQR
    upper_bound = Q3 + 1.5 * IQR
@@ -142,7 +143,7 @@ Including highly correlated features in a model can cause a number of problems, 
 
 A correlation matrix is a square matrix that shows the correlation coefficients between all pairs of variables in a dataset. The correlation coefficient is a measure of the linear relationship between two variables.
 
-It can be used to identify the variables which are highly  correlated wiht each other 
+It can be used to identify the variables which are highly  correlated with each other 
 ``````python
 # Select only numeric columns
 numeric_columns = capped_df.select_dtypes(include=[np.number])
@@ -173,12 +174,13 @@ for column in numeric_df:
     
     print('Shapiro test for column {}: p-value = {}'.format(column, p_value))
 ``````
- In this case Shapiro-Wilk test has been use to chekc the normality of the data
+ In this case Shapiro-Wilk test has been use to check the normality of the data
  Shapiro wilk test is applies only to numeric data with the help of for loop function
 
 ## normalizing data 
 
-Normalizing a data can be done in various ways like normalization and standardizaion. In this case z-score is used to normalize the data 
+Normalizing a data can be done in various ways like normalization and standardization. In this case z-score is used to normalize the data .
+
 ``````python
 # Create a list of all the float and numeric columns
 float_columns = [column for column in capped_df.columns if pd.api.types.is_numeric_dtype(capped_df[column])]
@@ -189,7 +191,7 @@ for column in float_columns:
 ``````
 ## One  Hot Endocding
 
-Machine does not understand any text formant to make it understand any data first, it needs to be converted into numerical formant. One hot Ecoding does the same. It converts the objects (stirngs ) into float 
+Machine does not understand any text formant to make it understand any data first, it needs to be converted into numerical formant. One hot Encoding does the same. It converts the objects (strings ) into float.
 
 ``````python
 from sklearn.preprocessing import OneHotEncoder
@@ -203,27 +205,28 @@ capped_df['class'] = one_hot_encoder.fit_transform(capped_df[['class']])
 capped_df['equinox'] = one_hot_encoder.fit_transform(capped_df[['equinox']])
 ``````
 
-before proceeding, important liabrary needs to be imported
+before proceeding, important library needs to be imported
+
 ``````python
 from sklearn.preprocessing import OneHotEncoder
 ``````
 Different columns with object formant needs to be placed within the code as shown above. 
 One Hot Encoding works well wiht only few categorical variables
 
-## check for overfitting 
+## check for overfitting
 
-Over fitting is used when labes are not in balance
+Over fitting is used when labels are not in balance
 ``````python
 capped_df.pha.value_counts()/capped_df.shape[0]
 ``````
-by running this code we can see the following resuts like results
+by running this code we can see the following results
 
-PHA | Ratio 
+PHA | Ratio
 ------- | -------
 0.0 | 0.997784
 1.0 | 0.002216
 
-it can be clearly seen that the precentage of 0.0(N) in 99% which is not good inorder to create a balance in predicted values folliwng line of code has been used:
+it can be clearly seen that the percentage of 0.0(N) in 99% which is not good in order to create a balance in predicted values following line of code has been used:
 
 ``````python
 from imblearn.over_sampling import SMOTE
@@ -240,9 +243,9 @@ x = capped_df.drop(['pha','full_name','id','pdes',], axis=1)
 y = capped_df['pha'] 
 ``````
 
-In this case x varibes are the features and y variable is a label that need to be predicted which is PHA( Potentially Hazardous Asteroids).
+In this case x variables are the features and y variable is a label that need to be predicted which is PHA( Potentially Hazardous Asteroids).
 
-## Random Forest 
+## Random Forest
 
 ``````python
 from sklearn.ensemble import RandomForestClassifier
@@ -263,9 +266,10 @@ y: The labels of the dataset.
 test_size: The proportion of the data that should be used for the test set.
 random_state: A seed for the random number generator.
 
-### Model Training 
+### Model Training
 
 Now its time to train the model  by selecting and training the model
+
 ``````python
 model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(x_train, y_train)
@@ -273,7 +277,8 @@ model.fit(x_train, y_train)
 
 ### Model Efficiency check
 
-It is important to check the efficiency of model to see how it is performaing
+It is important to check the efficiency of model to see how it is performing
+
 ``````python
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report

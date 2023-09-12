@@ -43,6 +43,7 @@ df.drop(columns=drop_colums), a new DataFrame df2 is created, excluding the spec
 ## Dealing with null values
 
 The code df2.isnull().sum() is used to compute the sum of missing values in each column of the DataFrame df2. By applying the isnull() function, it identifies which cells have missing (null) values, and then sum() tallies these occurrences for each column. This analysis helps understand the extent of missing data in the dataset.
+
 ``````python
 df2.isnull().sum()
 ``````
@@ -66,7 +67,7 @@ city_of_residence | 935
 business_industries | 990
 self_made | 3689
 
-This inoformation tell about the total number of null values in a DataFrame. These values are too much. Removing these NaN is the first priority of the process
+This information tell about the total number of null values in a DataFrame. These values are too much. Removing these NaN is the first priority of the process
 
 ``````python
 df3=df2.dropna()
@@ -173,7 +174,7 @@ plt.ylabel('Number of Female Billionaires')
 plt.title('Number of Female Billionaires in the World by Year')
 plt.show()
 ``````
-![](<Female Billionaires.GIF>)
+
 
 ## The age distribution of billionaires 
 
@@ -190,7 +191,7 @@ plt.show()
 
 is code segment visualizes the age distribution of billionaires using a histogram. It assumes that df3 contains the relevant age data. The age_distribution variable holds the age values. The histogram is constructed with 20 bins using plt.hist(), displaying the frequency of age occurrences. The plot is labeled with appropriate axis titles and a title, and then displayed using plt.show(). This visualization offers insights into the age distribution of billionaires in the dataset.
 
-![](Capture.GIF)
+
 
 ## The gender distribution of billionaires
 
@@ -212,7 +213,7 @@ plt.show()
 
 This code segment analyzes and visualizes the gender distribution of billionaires. The gender_distribution variable holds the count of each gender category. The first two print() statements display the gender distribution. The subsequent lines create a bar plot using plt.bar(), depicting the number of billionaires for each gender. The plot is labeled with suitable axis titles and a title, and then displayed using plt.show(). This visualization provides insights into the representation of genders among billionaires in the dataset.
 
-![](gender.GIF)
+
 
 ## The distribution of billionaires by country of citizenship
 
