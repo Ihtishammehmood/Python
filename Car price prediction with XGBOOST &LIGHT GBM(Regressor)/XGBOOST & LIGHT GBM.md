@@ -16,6 +16,9 @@
 
 XGBoost (eXtreme Gradient Boosting) and LightGBM are prominent gradient boosting frameworks used for price prediction. XGBoost is known for its speed, regularization, and flexibility, making it efficient for large datasets. LightGBM, on the other hand, excels in speed and memory efficiency through histogram-based learning. Both frameworks leverage ensemble learning, utilizing decision trees sequentially to learn patterns from historical price data and relevant features, enabling accurate predictions for pricing in various domains. The choice between XGBoost and LightGBM depends on dataset size, computational resources, and the specific needs of the prediction task.
 
+>**[Click here to access article](https://www.linkedin.com/posts/ihtishammehmood_dataanalyics-datascience-machinelearning-activity-7120715226777288706-Jyn9?utm_source=share&utm_medium=member_desktop)**
+
+
 >**[Access Visualization from here](https://public.tableau.com/views/UsedCarsPriceinPakistan/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link)**
 
 >**[Click here to see EDA & Analysis](https://github.com/Ihtishammehmood/Python/tree/8918db401bfdd7eadba57dd192e65516f1c8b537/Data%20Aanalysis%20with%20python)**
